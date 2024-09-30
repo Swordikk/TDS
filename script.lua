@@ -8,13 +8,16 @@ local Skip = {
 }
 
 function AutoSkip()
+while _G.AutoSkip == true do
 game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunction"):InvokeServer(unpack(Skip))
+wait(0.1)
+end
 end
 
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "",
-	PremiumOnly = true
+	PremiumOnly = false
 })
 
 Tab:AddToggle({
