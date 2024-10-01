@@ -10,10 +10,28 @@ local Skip = {
     [2] = "Skip"
 }
 
+local Commander = {
+    [1] = "Troops",
+    [2] = "Abilities",
+    [3] = "Activate",
+    [4] = {
+        ["Troop"] = workspace:WaitForChild("Towers"):WaitForChild("Victorian"),
+        ["Name"] = "Call Of Arms",
+        ["Data"] = {}
+    }
+}
+
 function AutoSkip()
     while _G.AutoSkip == true do
         game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunction"):InvokeServer(unpack(Skip))
         wait(0.1)
+    end
+end
+
+function AutoCommander()
+    while _G.AutoCommander == true do
+        game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunction"):InvokeServer(unpack(Commander))
+        wait(10.5)
     end
 end
 
@@ -41,6 +59,15 @@ Tab:AddToggle({
 	Callback = function(Value)
 		_G.AutoSkip = Value
 		AutoSkip()
+	end    
+})
+
+Tab:AddToggle({
+	Name = "AutoCommander (turn on when 3 commanders)",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoCommander = Value
+		AutoCommander()
 	end    
 })
 
