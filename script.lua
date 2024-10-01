@@ -52,23 +52,10 @@ Tab:AddToggle({
 })
 
 Tab:AddToggle({
-	Name = "AutoCommander (turn on when 3 commanders)",
+	Name = "AutoCommander",
 	Default = false,
 	Callback = function(Value)
-		_G.AutoCommander = Value
-        if _G.AutoCommander == true then
-            local Commander = {
-                [1] = "Troops",
-                [2] = "Abilities",
-                [3] = "Activate",
-                [4] = {
-                    ["Troop"] = workspace:WaitForChild("Towers"):WaitForChild("Victorian"),
-                    ["Name"] = "Call Of Arms",
-                    ["Data"] = {}
-                }
-            }
-        end
-		AutoCommander()
+		
 	end    
 })
 
