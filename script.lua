@@ -28,12 +28,12 @@ function AutoSkip()
     end
 end
 
-function AutoCommander()
+--[[function AutoCommander()
     while _G.AutoCommander == true do
         game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunction"):InvokeServer(unpack(Commander))
         wait(10.5)
     end
-end
+end]]--
 
 function WalkSpeed()
 	while _G.WalkSpeed do game:GetService("RunService").RenderStepped:wait()
@@ -66,8 +66,9 @@ Tab:AddToggle({
 	Name = "AutoCommander (turn on when 3 commanders)",
 	Default = false,
 	Callback = function(Value)
-		_G.AutoCommander = Value
-		AutoCommander()
+		if Value == true then
+            game:GetService("ReplicatedStorage"):WaitForChild("RemoteFunction"):InvokeServer(unpack(Commander))
+        end
 	end    
 })
 
